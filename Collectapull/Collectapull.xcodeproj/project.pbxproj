@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C8AAAA4C2F7B5D93001DED1A /* Test2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8AAAA4B2F7B5D93001DED1A /* Test2.storyboard */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C223A8452F6C65A300511C90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		C223A82E2F6C65A200511C90 /* Collectapull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collectapull.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C223A8442F6C65A300511C90 /* CollectapullTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectapullTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C223A84E2F6C65A300511C90 /* CollectapullUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectapullUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8AAAA4B2F7B5D93001DED1A /* Test2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Test2.storyboard; path = ../../../Test2.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +93,7 @@
 		C223A8252F6C65A200511C90 = {
 			isa = PBXGroup;
 			children = (
+				C8AAAA4B2F7B5D93001DED1A /* Test2.storyboard */,
 				C223A8302F6C65A200511C90 /* Collectapull */,
 				C223A8472F6C65A300511C90 /* CollectapullTests */,
 				C223A8512F6C65A300511C90 /* CollectapullUITests */,
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8AAAA4C2F7B5D93001DED1A /* Test2.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
