@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController {
         let home = makeNav(root: ViewController(), title: "Home", image: "house.fill")
         let wishlist = makeNav(root: WishlistViewController(), title: "Wishlist - ", image: "heart")
         let add = makeNav(root: AddViewController(), title: "Add - Allison", image: "plus.circle.fill")
-        let collections = makeNav(root: CollectionsViewController(), title: "Collections - ", image: "square.grid.2x2")
+        let collections = makeNav(root: CollectionsViewController(), title: "Collections - Wyatt", image: "square.grid.2x2")
         let account = makeNav(root: AccountViewController(), title: "Account - ", image: "person")
 
         viewControllers = [home, wishlist, add, collections, account]
