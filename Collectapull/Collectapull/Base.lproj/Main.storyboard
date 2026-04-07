@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="1071" y="131"/>
         </scene>
-        <!--View Controller-->
+        <!--Item View Controller-->
         <scene sceneID="uxt-VB-WX4">
             <objects>
-                <viewController id="Izw-db-P67" sceneMemberID="viewController">
+                <viewController id="Izw-db-P67" customClass="ItemViewController" customModule="Collectapull" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K8y-IG-ezf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,10 +221,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcd-y1-qRC">
+                                <rect key="frame" x="22" y="66" width="77" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; Back"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-co-u6D">
+                                <rect key="frame" x="294" y="66" width="76" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title="Edit"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zhD-jp-RyP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="backBTN" destination="Fcd-y1-qRC" id="mkz-LJ-uJN"/>
+                        <outlet property="collectionOL" destination="IJ9-Hf-nV9" id="EaK-al-JhZ"/>
+                        <outlet property="descriptionOL" destination="fg0-TF-qXs" id="ika-EK-CaU"/>
+                        <outlet property="editBTN" destination="ZkL-co-u6D" id="zBX-mo-rrd"/>
+                        <outlet property="imageIV" destination="STb-kW-kfI" id="moq-H9-aFT"/>
+                        <outlet property="priceOL" destination="gG1-Kg-kSh" id="xyF-DR-6aD"/>
+                        <outlet property="typeOL" destination="dPG-Ve-a4M" id="z9x-Tc-jyr"/>
+                        <outlet property="yearOL" destination="aLD-k2-Pqu" id="SaM-wy-j5I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wc-tu-fHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -332,6 +354,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add"/>
+                                <connections>
+                                    <action selector="addBTNAction:" destination="Vb7-Ps-BEg" eventType="touchUpInside" id="fnb-z9-70N"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8D-pd-oa4">
                                 <rect key="frame" x="19" y="535" width="124" height="30"/>
@@ -349,11 +374,32 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Clear"/>
+                                <connections>
+                                    <action selector="clearBTNAction:" destination="Vb7-Ps-BEg" eventType="touchUpInside" id="NQG-BV-GsK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osg-JK-j59">
+                                <rect key="frame" x="9" y="66" width="67" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; Exit"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Q5-Ar-eWE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="addBTN" destination="DKM-eh-gaA" id="7uv-6V-Klx"/>
+                        <outlet property="addCollectionBTN" destination="L8D-pd-oa4" id="2EK-T6-abb"/>
+                        <outlet property="clearBTN" destination="6zJ-ha-i6G" id="bur-b8-VTG"/>
+                        <outlet property="currentValTV" destination="jgS-sw-h8N" id="6nT-Ae-qkN"/>
+                        <outlet property="descriptionTV" destination="1GE-PK-JUq" id="UTA-Pn-2dD"/>
+                        <outlet property="imageIV" destination="OEb-Rm-AcT" id="5SG-YQ-LUJ"/>
+                        <outlet property="nameTV" destination="1kV-ac-kId" id="ewq-VQ-uwG"/>
+                        <outlet property="priceTV" destination="wmx-EL-hHT" id="rJE-gq-PoQ"/>
+                        <outlet property="typeTV" destination="DIF-O6-urF" id="vcm-yo-9cd"/>
+                        <outlet property="yearMadeTV" destination="cHV-v7-o40" id="Kbj-wd-xLl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uf9-8j-Nh4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -636,6 +682,7 @@
         <image name="eraser.slash" catalog="system" width="128" height="128"/>
         <image name="highlighter" catalog="system" width="128" height="120"/>
         <image name="lasso" catalog="system" width="128" height="121"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="94"/>
         <image name="scribble" catalog="system" width="128" height="117"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
