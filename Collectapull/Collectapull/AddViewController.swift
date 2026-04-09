@@ -25,6 +25,9 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
     //image
     @IBOutlet weak var imageIV: UIImageView!
     
+    //public vars
+    private var selectedCollectionName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -87,6 +90,8 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
         picker.dismiss(animated: true)
     }
     
+    
+    //alert to select collection
     func showAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -95,20 +100,29 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
     
     //Button adds items to collections
     @IBAction func addBTNAction(_ sender: Any) {
+        //needs a name to submit
         guard let name = nameTV.text, !name.isEmpty else {
             showAlert(message: "Please enter a name.")
             return
         }
+        //alert info
         let alert = UIAlertController(title: "Add to Collection",
                                       message: "Which collection should this go in?",
                                       preferredStyle: .actionSheet)
-
+        //cancel Button
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         if let popover = alert.popoverPresentationController {
             popover.sourceView = sender as? UIView
             popover.sourceRect = (sender as? UIView)?.bounds ?? .zero
         }
+        
+        //this will allow it to be added to selected collection
+        alert.addAction(UIAlertAction(title: collection.name, style: .default) { _ in
+            self.selectedCollectionName = collection.name
+            self.addItem(toCollectionAt: index, name: name)
+            self.performSegue(withIdentifier: "itemView", sender: self)  // trigger segue after adding
+        })
         present(alert, animated: true)
     }
     
@@ -136,7 +150,7 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
             destinationVC.priceText = priceTV.text ?? ""
             destinationVC.currentText = currentValTV.text ?? ""
             destinationVC.descriptionText = descriptionTV.text ?? ""
-            destinationVC.imageIV.image = imageIV.image
+            destinationVC.image = imageIV.image ?? UIImage(named: "placeholder")!
         }
     }
     
