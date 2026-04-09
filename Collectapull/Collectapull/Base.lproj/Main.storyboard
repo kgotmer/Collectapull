@@ -487,6 +487,9 @@
                             <constraint firstItem="So8-yn-9dz" firstAttribute="top" secondItem="UEb-d1-XMW" secondAttribute="top" constant="20" id="uv7-ZP-nV0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="So8-yn-9dz" id="xna-bd-0HB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igl-Qb-JTW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
