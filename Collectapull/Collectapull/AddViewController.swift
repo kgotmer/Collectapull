@@ -87,15 +87,37 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
         picker.dismiss(animated: true)
     }
     
-
-    //Button adds items to collections
-    @IBAction func addBTNAction(_ sender: Any) {
-        
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
+    //Button adds items to collections
+    @IBAction func addBTNAction(_ sender: Any) {
+        guard let name = nameTV.text, !name.isEmpty else {
+            showAlert(message: "Please enter a name.")
+            return
+        }
+        let alert = UIAlertController(title: "Add to Collection",
+                                      message: "Which collection should this go in?",
+                                      preferredStyle: .actionSheet)
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = sender as? UIView
+            popover.sourceRect = (sender as? UIView)?.bounds ?? .zero
+        }
+        present(alert, animated: true)
+    }
     
     //clears all fields
     @IBAction func clearBTNAction(_ sender: Any) {
+        clearFields()
+    }
+    
+    func clearFields() {
         nameTV.text = ""
         yearMadeTV.text = ""
         typeTV.text = ""
@@ -103,6 +125,12 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
         currentValTV.text = ""
         descriptionTV.text = ""
         imageIV.image = nil
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddToCollectionSegue" {
+            
+        }
     }
     
 }
