@@ -14,8 +14,10 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var yearOL: UILabel!
     @IBOutlet weak var typeOL: UILabel!
     @IBOutlet weak var priceOL: UILabel!
+    @IBOutlet weak var currentOL: UILabel!
     @IBOutlet weak var collectionOL: UILabel!
     @IBOutlet weak var descriptionOL: UITextView!
+    
     
     //buttons
     @IBOutlet weak var editBTN: UIButton!
@@ -28,12 +30,21 @@ class ItemViewController: UIViewController {
     var yearText: String = ""
     var typeText: String = ""
     var priceText: String = ""
+    var currentText: String = ""
     var collectionText: String = ""
     var descriptionText: String = ""
+    var image: UIImage = #imageLiteral(resourceName: "placeholder")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nameOL.text = nameText
+        yearOL.text = "Year Made: \(yearText)"
+        typeOL.text = "Product Type: \(typeText)"
+        priceOL.text = "Price Purchased At: \(priceText)"
+        currentOL.text = "Current Value: \(currentText)"
+        collectionOL.text = "Collection: \(collectionText)"
+        descriptionOL.text = descriptionText
+        imageIV.image = image
     }
 
 }

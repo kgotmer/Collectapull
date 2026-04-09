@@ -163,7 +163,7 @@
             <objects>
                 <viewController id="Izw-db-P67" customClass="ItemViewController" customModule="Collectapull" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K8y-IG-ezf">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STb-kW-kfI">
@@ -182,6 +182,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title="Edit"/>
+                                <connections>
+                                    <segue destination="Vb7-Ps-BEg" kind="show" identifier="addItem" id="CZ6-dE-sUA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price Purchased At: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gG1-Kg-kSh">
                                 <rect key="frame" x="26" y="411" width="309" height="21"/>
@@ -230,8 +233,10 @@
                         <viewLayoutGuide key="safeArea" id="zhD-jp-RyP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QIr-AF-NVs"/>
                     <connections>
                         <outlet property="collectionOL" destination="IJ9-Hf-nV9" id="EaK-al-JhZ"/>
+                        <outlet property="currentOL" destination="Nfa-66-Xjf" id="QWu-uC-tKf"/>
                         <outlet property="descriptionOL" destination="fg0-TF-qXs" id="ika-EK-CaU"/>
                         <outlet property="editBTN" destination="ZkL-co-u6D" id="zBX-mo-rrd"/>
                         <outlet property="imageIV" destination="STb-kW-kfI" id="moq-H9-aFT"/>
@@ -243,14 +248,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wc-tu-fHJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-519.84732824427476" y="791.54929577464793"/>
+            <point key="canvasLocation" x="-703" y="796"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="Wpe-Dd-GQe">
             <objects>
                 <viewController id="Vb7-Ps-BEg" customClass="AddViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q9a-Ey-u6w">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvQ-Tk-Byd">
@@ -358,12 +363,14 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Add To Collection"/>
                                 <connections>
                                     <action selector="addBTNAction:" destination="Vb7-Ps-BEg" eventType="touchUpInside" id="fnb-z9-70N"/>
+                                    <segue destination="Izw-db-P67" kind="show" identifier="itemView" id="SVZ-oL-6Hx"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Q5-Ar-eWE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="OaQ-Mf-4ey"/>
                     <connections>
                         <outlet property="addBTN" destination="DKM-eh-gaA" id="7uv-6V-Klx"/>
                         <outlet property="clearBTN" destination="6zJ-ha-i6G" id="bur-b8-VTG"/>
@@ -652,6 +659,9 @@
             <point key="canvasLocation" x="-517" y="139"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="CZ6-dE-sUA"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark.seal.text.page.rtl" catalog="system" width="115" height="128"/>
         <image name="eraser.slash" catalog="system" width="128" height="128"/>

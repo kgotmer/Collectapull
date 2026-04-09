@@ -128,8 +128,15 @@ class AddViewController: UIViewController,  UIImagePickerControllerDelegate, UIN
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddToCollectionSegue" {
-            
+        if segue.identifier == "itemView" {
+            let destinationVC = segue.destination as! ItemViewController
+            destinationVC.nameText = nameTV.text ?? ""
+            destinationVC.yearText = yearMadeTV.text ?? ""
+            destinationVC.typeText = typeTV.text ?? ""
+            destinationVC.priceText = priceTV.text ?? ""
+            destinationVC.currentText = currentValTV.text ?? ""
+            destinationVC.descriptionText = descriptionTV.text ?? ""
+            destinationVC.imageIV.image = imageIV.image
         }
     }
     
