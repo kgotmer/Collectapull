@@ -33,7 +33,7 @@ class ItemViewController: UIViewController {
     var currentText: String = ""
     var collectionText: String = ""
     var descriptionText: String = ""
-    var image: UIImage = #imageLiteral(resourceName: "placeholder")
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class ItemViewController: UIViewController {
         currentOL.text = "Current Value: \(currentText)"
         collectionOL.text = "Collection: \(collectionText)"
         descriptionOL.text = descriptionText
-        imageIV.image = image
+        imageIV.image = image ?? UIImage(named: "placeholder")
     }
 
 }

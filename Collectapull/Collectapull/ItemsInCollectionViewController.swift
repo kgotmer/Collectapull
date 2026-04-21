@@ -82,9 +82,21 @@ class ItemsInCollectionViewController: UIViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedItem = selectedCollection?.items[indexPath.row]
         
-        print("Selected item: \(selectedItem?.name ?? "")")
+        guard let item = selectedItem else { return }
         
-        // later, this is where you can push or present ItemViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destination = storyboard.instantiateViewController(withIdentifier: "ItemViewController") as! ItemViewController
+        
+        destination.nameText = item.name
+        destination.yearText = item.yearMade
+        destination.typeText = item.productType
+        destination.priceText = item.pricePurchasedAt
+        destination.currentText = item.currentValue
+        destination.collectionText = selectedCollection?.name ?? ""
+        destination.descriptionText = item.extraDescription
+        destination.image = UIImage(named: item.imageName) ?? UIImage(named: "placeholder") ?? UIImage()
+        
+        navigationController?.pushViewController(destination, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
