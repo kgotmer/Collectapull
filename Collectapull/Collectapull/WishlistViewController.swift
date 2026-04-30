@@ -7,37 +7,44 @@
 
 import UIKit
 
-class WishlistViewController: UIViewController {
+class WishlistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var createListButton: UIButton!
-
-    @IBOutlet weak var collectionAButton: UIButton!
-    @IBOutlet weak var collectionBButton: UIButton!
-    @IBOutlet weak var collectionCButton: UIButton!
-    @IBOutlet weak var collectionDButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
 
     var collections: [String] = ["Collection A", "Collection B", "Collection C", "Collection D"]
     var selectedCollectionName: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateCollectionButtons()
+
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
-    func updateCollectionButtons() {
-        collectionAButton.setTitle(collections[0], for: .normal)
-        collectionBButton.setTitle(collections[1], for: .normal)
-        collectionCButton.setTitle(collections[2], for: .normal)
-        collectionDButton.setTitle(collections[3], for: .normal)
+    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return collections.count
     }
 
-    @IBAction func collectionButtonTapped(_ sender: UIButton) {
-        selectedCollectionName = sender.currentTitle ?? "Collection"
-        performSegue(withIdentifier: "showWishlistCategory", sender: sender)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath)
+        cell.textLabel?.text = collections[indexPath.row]
+        return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCollectionName = collections[indexPath.row]
+        performSegue(withIdentifier: "showWishlistCategory", sender: self)
+    }
+
+ 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
         if segue.identifier == "showWishlistCategory" {
             if let destination = segue.destination as? WishlistCategoryViewController {
                 destination.collectionName = selectedCollectionName
@@ -46,19 +53,17 @@ class WishlistViewController: UIViewController {
 
         if segue.identifier == "showCreateWishlist" {
             if let destination = segue.destination as? CreateWishlistViewController {
+
                 destination.modalPresentationStyle = .overFullScreen
 
                 destination.onCreate = { [weak self] newName in
                     guard let self = self else { return }
 
-                    if !newName.trimmingCharacters(in: .whitespaces).isEmpty {
-                        for i in 0..<self.collections.count {
-                            if self.collections[i].hasPrefix("Collection") {
-                                self.collections[i] = newName
-                                break
-                            }
-                        }
-                        self.updateCollectionButtons()
+                    let trimmed = newName.trimmingCharacters(in: .whitespaces)
+
+                    if !trimmed.isEmpty {
+                        self.collections.append(trimmed)
+                        self.tableView.reloadData()
                     }
                 }
             }
