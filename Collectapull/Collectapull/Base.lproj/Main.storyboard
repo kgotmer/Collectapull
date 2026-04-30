@@ -471,7 +471,7 @@
         <!--Wishlist View Controller-->
         <scene sceneID="bfi-1l-Uuz">
             <objects>
-                <viewController id="mOZ-gK-roD" customClass="WishlistViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WishlistViewController" id="mOZ-gK-roD" customClass="WishlistViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITL-va-C3H">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -554,7 +554,7 @@
                     <connections>
                         <outlet property="createListButton" destination="3bO-si-bEg" id="UIr-EH-zAV"/>
                         <outlet property="searchBar" destination="VQ6-FK-mXV" id="Ohi-jA-7gO"/>
-                        <outlet property="tableView" destination="tST-eZ-098" id="pGq-UJ-roS"/>
+                        <outlet property="tableView" destination="tST-eZ-098" id="O7q-X8-hfH"/>
                         <segue destination="c73-Kn-A2J" kind="show" identifier="showWishlistCategory" id="lah-tv-uqW"/>
                     </connections>
                 </viewController>
